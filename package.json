@@ -1,0 +1,19 @@
+{
+  "name": "bootcamp-finder-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/Wjonke/bootcamp-finder-backend.git",
+  "author": "Wes Jonke <wesjonke@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": " nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.21.2"
+  }
+}
