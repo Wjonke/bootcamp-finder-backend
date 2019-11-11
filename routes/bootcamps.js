@@ -1,34 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-//since we set a base url in server.js, we only need the additional / or /:id for each crud OP
+const {
+  getBootCamps,
+  getBootCamp,
+  createBootCamp,
+  updateBootCamps,
+  deleteBootCamps
+} = require('../controllers/bootcamps');
 
-router.get('/', (req, res) => {
-  res.status(200).json({ success: true, msg: 'show all bootcamps HERE' });
-});
+//here we use the router to bring in each controller used by the specified endpoint
 
-router.get('/:id', (req, res) => {
-  res.status(200).json({
-    success: true,
-    msg: `Get bootcamp with ID#  ${req.params.id}`
-  });
-});
+router
+  .route('/')
+  .get(getBootCamps)
+  .post(createBootCamp);
 
-router.post('/', (req, res) => {
-  res.status(200).json({ success: true, msg: 'create new bootcamps HERE' });
-});
-
-router.put('/:id', (req, res) => {
-  res
-    .status(200)
-    .json({ success: true, msg: `Update bootcamp with ID#  ${req.params.id}` });
-});
-
-router.delete('/:id', (req, res) => {
-  res.status(200).json({
-    success: true,
-    msg: `Bootcamp with ID ${req.params.id} was successfully deleted`
-  });
-});
+router
+  .route('/:id')
+  .get(getBootCamp)
+  .put(updateBootCamps)
+  .delete(deleteBootCamps);
 
 module.exports = router;
