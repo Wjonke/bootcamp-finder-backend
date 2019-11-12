@@ -34,7 +34,7 @@ const BootcampSchema = new mongoose.Schema({
   },
 
   email: {
-    type: string,
+    type: String,
     /////setting regex to validate for an email/////
     match: [
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -51,12 +51,12 @@ const BootcampSchema = new mongoose.Schema({
     //GeoJSON Point
     type: {
       type: String,
-      enum: ['Point'], // 'location.type' must be 'Point'
-      required: true
+      enum: ['Point'] // 'location.type' must be 'Point'
+      // required: true
     },
     coordinates: {
       type: [Number],
-      required: true,
+      // required: true,
       index: '2dsphere'
     },
     formattedAddress: String,
@@ -117,3 +117,5 @@ const BootcampSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+module.exports = mongoose.model('Bootcamp', BootcampSchema);
